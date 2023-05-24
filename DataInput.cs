@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Polybius_Verfahren
 {
     public class DataInput : IDataInput
@@ -19,7 +21,7 @@ namespace Polybius_Verfahren
                 }
             }while(!validInput);
 
-            return key;
+            return ReplaceDoubles(key);
         }
 
         //lässt einen den zu verschluesselnden Text definieren. Dieser darf keine Zahlen beinhalten und die Länge muss größer als 0 sein
@@ -40,6 +42,27 @@ namespace Polybius_Verfahren
             }while(!validInput);
 
             return text;
+        }
+
+        //durchsucht das Schluesselwort auf mehrfach vorkommende Buchstaben und entfernt diese
+        private String ReplaceDoubles(String key){
+            String reducedKey = "";
+            foreach (var item in key)
+            {   
+                bool containsLetter = false;
+                foreach (var reducedItem in reducedKey)
+                {
+                    if(item.Equals(reducedItem)){
+                        containsLetter = true;
+                        break;
+                    }
+                }
+                if(!containsLetter){
+                    reducedKey = reducedKey + item;
+                }
+            }
+            System.Console.WriteLine(reducedKey);
+            return reducedKey;
         }
     }
 }

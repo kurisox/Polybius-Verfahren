@@ -4,7 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello World");
+            PolybiusService polybiusService = new PolybiusService(new DataInput());
+            polybiusService.Run();
         }
     }
 }

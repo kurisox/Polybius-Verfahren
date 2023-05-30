@@ -12,7 +12,7 @@ namespace Polybius_Verfahren
             bool validInput;
             do{
                 System.Console.WriteLine("Bitte das Schluesselwort eingeben:");
-                key = Console.ReadLine();
+                key = Console.ReadLine().ToUpper();
                 validInput = key.All(Char.IsLetter) && key.Count() > 0;
                 if(validInput){
                     System.Console.WriteLine("Schluesselwort akzeptiert!");
@@ -61,7 +61,6 @@ namespace Polybius_Verfahren
                     reducedKey = reducedKey + item;
                 }
             }
-            System.Console.WriteLine(reducedKey);
             return reducedKey;
         }
     }
